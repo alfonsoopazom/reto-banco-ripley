@@ -34,11 +34,6 @@
       <div class="col-xl-6 mb-3">
         <label class="mb-1 title">Banco</label>
         <div class="mb-3">
-          <!-- <select [(ngModel)]='assetClassId' [disabled]='disabled'
-                  class='custom-select d-inline-block w-auto mr-1'>
-            <option [ngValue]='null'>Todos</option>
-            <option *ngFor='let asset of assetClass' [ngValue]='asset.id'>{{ asset.name }}</option>
-          </select>-->
           <select (change)="populateListAccountBank()" formControlName="bankName" class="form-select" aria-label="Default select example">
             <option [ngValue]='null' selected>Seleccione un banco</option>
             <option *ngFor="let listOfBank of listOfBankArray.banks" [ngValue]="listOfBank.name">{{ listOfBank.name }}</option>
