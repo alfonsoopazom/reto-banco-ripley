@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {ClientModel} from "../../models/destination-client.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveAddressee() {
-    return this.httpClient.post(this.urlApi, {headers: this.httpOptions});
+  saveAddressee(newAddressee: ClientModel) {
+    return this.httpClient.post(this.urlApi + '/add', newAddressee,{headers: this.httpOptions});
   }
 
   findAccountByrutOrName(value: any) {

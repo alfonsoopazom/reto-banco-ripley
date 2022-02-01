@@ -26,7 +26,7 @@
       <div class="col-xl-6 mb-3">
         <label class="mb-1 title">Telefono</label>
         <div class="mb-3">
-          <input type="text" class="form-control" formControlName="phone" placeholder="ingrese telefono" aria-label="Username">
+          <input type="text" class="form-control" formControlName="phoneNumber" placeholder="ingrese telefono" aria-label="Username">
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div class="col-xl-6 mb-3">
         <label class="mb-1 title">Banco</label>
         <div class="mb-3">
-          <select (change)="populateListAccountBank()" formControlName="bankName" class="form-select" aria-label="Default select example">
+          <select (change)="populateListAccountBank()" formControlName="targetBank" class="form-select" aria-label="Default select example">
             <option [ngValue]='null' selected>Seleccione un banco</option>
             <option *ngFor="let listOfBank of listOfBankArray.banks" [ngValue]="listOfBank.name">{{ listOfBank.name }}</option>
           </select>
@@ -43,7 +43,7 @@
       <div class="col-xl-6 mb-3">
         <label class="mb-1 title">Tipo de cuenta</label>
         <div class="mb-3">
-          <select formControlName="bankTypeAccount" class="form-select" aria-label="Default select example">
+          <select formControlName="accountType" class="form-select" aria-label="Default select example">
             <option [ngValue]='null' selected>Seleccione un tipo de cuenta</option>
             <option *ngIf="this.addreesserForm.get('bankName')?.value === 'Banco Estado'" [ngValue]='listOfBankAccount.CuentaRut' >{{ listOfBankAccount.CuentaRut }}</option>
             <option [ngValue]='listOfBankAccount.CuentaCorriente'>{{ listOfBankAccount.CuentaCorriente }}</option>
@@ -57,7 +57,7 @@
       <div class="col-xl-6 mb-3">
         <label class="mb-1 title">Numero de cuenta</label>
         <div class="mb-3">
-          <input type="text" class="form-control" formControlName="accountType" placeholder="ingrese numero de cuenta" aria-label="Username">
+          <input type="text" class="form-control" formControlName="accountNumber" placeholder="ingrese numero de cuenta" aria-label="Username">
         </div>
       </div>
     </div>
