@@ -6,3 +6,8 @@
 .title {
   color: blueviolet;
 }
+
+::ng-deep .custom-style{
+  background-color:lightgreen;
+  color:white;
+}

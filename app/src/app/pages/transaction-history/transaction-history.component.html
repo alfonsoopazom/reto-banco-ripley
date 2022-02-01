@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="fw-bold fs-3" style="color: blueviolet">{{ title }}</h2>
+  <div class="mat-elevation-z3">
+    <mat-table mat-table matSort [dataSource]="dataSource">
+      <ng-container matColumnDef='position'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Nombre Destinatario</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='destinatario' mat-cell>
+          {{ element.position}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='name'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Rut</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='rut' mat-cell>
+          {{ element.name}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='weight'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Banco</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='banco' mat-cell>
+          {{ element.weight}}
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef='symbol'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Tipo de cuenta</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='cuenta' mat-cell>
+          {{ element.symbol}}
+        </mat-cell>
+      </ng-container>
+
+    <!--  <ng-container matColumnDef='value'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Monto</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='monto' mat-cell>
+          {{ element.name}}
+        </mat-cell>
+      </ng-container>-->
+
+      <mat-header-row *matHeaderRowDef='displayedColumns' mat-header-row></mat-header-row>
+      <mat-row *matRowDef='let element; columns: displayedColumns;' mat-row></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[9, 20, 30]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>

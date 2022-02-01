@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URLAPI: 'http://localhost:3000/api/home',
+  LISTBANK: 'https://bast.dev/api/banks.php',
 };
 
 /*
