@@ -7,7 +7,12 @@
   color: blueviolet;
 }
 
-::ng-deep .custom-style{
+::ng-deep .success-style {
   background-color:lightgreen;
+  color:white;
+}
+
+::ng-deep .warning-style {
+  background-color:red;
   color:white;
 }
