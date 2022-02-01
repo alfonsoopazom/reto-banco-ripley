@@ -11,6 +11,13 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { AddresseeFormComponent } from './pages/addressee-form/addressee-form.component';
 import { TransactionHistoryComponent } from './pages/transaction-history/transaction-history.component';
 import { TransactionFormComponent } from './pages/transaction-form/transaction-form.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from '@angular/common/http'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +28,19 @@ import { TransactionFormComponent } from './pages/transaction-form/transaction-f
     AddresseeFormComponent,
     TransactionHistoryComponent,
     TransactionFormComponent,
-
   ],
   imports: [
+    MatSnackBarModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     APP_ROUTING,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
