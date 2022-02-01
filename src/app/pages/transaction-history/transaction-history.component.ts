@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {TransactionService} from "../../services/rest/transaction.service";
+import {TransactionDetailModel} from "../../models/transaction-detail.model";
 
 @Component({
   selector: 'app-transaction-history',
@@ -13,9 +15,9 @@ export class TransactionHistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'rut', 'bank', 'account', 'value'];
   public title = "HISTORIAL DE TRANSACCIONES"
-  public ELEMENT_DATA: any[] = [
+/*  public ELEMENT_DATA: any[] = [
     {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
     {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
     {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
@@ -36,18 +38,28 @@ export class TransactionHistoryComponent implements OnInit {
     {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
     {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
     {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-  ];
-  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+  ];*/
+  dataSource!: MatTableDataSource<TransactionDetailModel>;
 
 
-  constructor() { }
+  constructor(private transactionService: TransactionService) {
+  }
 
   ngOnInit(): void {
+    this.getAllTransactions();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  getAllTransactions() {
+    this.transactionService.getAllTransactions().subscribe((res: TransactionDetailModel[]) => {
+      this.dataSource = new MatTableDataSource<TransactionDetailModel>(res)
+      console.log(res)
+    })
+  }
+
 
 }

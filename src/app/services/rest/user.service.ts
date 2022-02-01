@@ -19,9 +19,4 @@ export class UserService {
     return this.httpClient.get(this.urlApi + '/find-account-by-rut-or-name?value=' + value, {headers: this.httpOptions});
   }
 
-  getAllAddressee(){
-    return this.httpClient.get(this.urlApi + '/getAllAddressee', {headers: this.httpOptions});
-  }
-
-
 }
