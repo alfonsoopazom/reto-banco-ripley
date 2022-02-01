@@ -2,39 +2,40 @@
   <h2 class="fw-bold fs-3" style="color: blueviolet">{{ title }}</h2>
   <div class="mat-elevation-z3">
     <mat-table mat-table matSort [dataSource]="dataSource">
-      <ng-container matColumnDef='position'>
-        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Nombre Destinatario</mat-header-cell>
-        <mat-cell *matCellDef='let element' data-label='destinatario' mat-cell>
-          {{ element.position}}
-        </mat-cell>
-      </ng-container>
 
       <ng-container matColumnDef='name'>
+        <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Nombre Destinatario</mat-header-cell>
+        <mat-cell *matCellDef='let element' data-label='destinatario' mat-cell>
+          {{ element.DestinationObject ? element.DestinationObject.name : "N/A" }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='rut'>
         <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Rut</mat-header-cell>
         <mat-cell *matCellDef='let element' data-label='rut' mat-cell>
-          {{ element.name}}
+          {{ element.DestinationObject ? element.DestinationObject.rut : "N/A" }}
         </mat-cell>
       </ng-container>
-      <ng-container matColumnDef='weight'>
+      <ng-container matColumnDef='bank'>
         <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Banco</mat-header-cell>
         <mat-cell *matCellDef='let element' data-label='banco' mat-cell>
-          {{ element.weight}}
+          {{ element.DestinationObject ? element.DestinationObject.targetBank : "N/A" }}
         </mat-cell>
 
       </ng-container>
-      <ng-container matColumnDef='symbol'>
+      <ng-container matColumnDef='account'>
         <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Tipo de cuenta</mat-header-cell>
         <mat-cell *matCellDef='let element' data-label='cuenta' mat-cell>
-          {{ element.symbol}}
+          {{ element.DestinationObject ? element.DestinationObject.accountType : "N/A" }}
         </mat-cell>
       </ng-container>
 
-    <!--  <ng-container matColumnDef='value'>
+      <ng-container matColumnDef='value'>
         <mat-header-cell *matHeaderCellDef mat-header-cell mat-sort-header>Monto</mat-header-cell>
         <mat-cell *matCellDef='let element' data-label='monto' mat-cell>
-          {{ element.name}}
+          {{ element.value ? (element.value | currency: 'CL') : "N/A"}}
         </mat-cell>
-      </ng-container>-->
+      </ng-container>
 
       <mat-header-row *matHeaderRowDef='displayedColumns' mat-header-row></mat-header-row>
       <mat-row *matRowDef='let element; columns: displayedColumns;' mat-row></mat-row>
